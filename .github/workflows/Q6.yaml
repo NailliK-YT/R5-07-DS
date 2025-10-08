@@ -1,0 +1,23 @@
+on: [push]
+permissions:
+  contents: write
+
+jobs:
+  create-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Créer Q6_archive_TOTO.txt
+        run: |
+            DATE=$(date +"%d-%m-%Y-%H%M%S")
+            FICHIER="Q6_archive_${DATE}.txt"
+            echo "Killian Demeillers" > "$FICHIER"
+            cat Q6.java >> "$FICHIER"
+            wc -l Q6.java >> "$FICHIER"
+      - name: Commit et push
+        run: |
+          git config --global user.name "Killian Demeillers"
+          git config --global user.email "killian.demeillers@etu.univ-lehavre.fr"
+          git add "$FICHIER"
+          git commit -m "Ajout rapport automatique"
+          git push

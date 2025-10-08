@@ -8,10 +8,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Créer Q2_archive_TOTO.txt
-        run: echo Killian Demeillers  > Q2_archive_TOTO.txt
-             date > Q2_archive_TOTO.txt
-             cat TOTO.txt > Q2_archive_TOTO.txt
-             stat TOTO.txt > Q2_archive_TOTO.txt
+        run: echo Killian Demeillers  >> Q2_archive_TOTO.txt
+             date >> Q2_archive_TOTO.txt
+             cat TOTO.txt >> Q2_archive_TOTO.txt
+             stat TOTO.txt >> Q2_archive_TOTO.txt
       - name: Commit et push
         run: |
           git config --global user.name "Killian Demeillers"

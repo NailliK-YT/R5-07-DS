@@ -1,0 +1,21 @@
+on: [push]
+permissions:
+  contents: write
+
+jobs:
+  create-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Créer Q2_archive_TOTO.txt
+        run: echo Killian Demeillers  > Q2_archive_TOTO.txt
+             date > Q2_archive_TOTO.txt
+             cat TOTO.txt > Q2_archive_TOTO.txt
+             stat TOTO.txt > Q2_archive_TOTO.txt
+      - name: Commit et push
+        run: |
+          git config --global user.name "Killian Demeillers"
+          git config --global user.email "killian.demeillers@etu.univ-lehavre.fr"
+          git add Q2_archive_TOTO.txt
+          git commit -m "Ajout rapport automatique"
+          git push
